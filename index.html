@@ -4,151 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Color Flipper</title>
-    <link rel="stylesheet" href="colorButton.css" />
-    <link rel="stylesheet" href="copyButton.css" />
-    <style>
-      /* CSS para o menu fixo no topo */
-      header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: #fff;
-        border-bottom: 1px solid #ccc;
-        padding: 10px 0;
-        z-index: 1000;
-      }
-
-      nav ul {
-        list-style-type: none;
-        padding: 0;
-        text-align: center;
-      }
-
-      nav ul li {
-        display: inline-block;
-        margin: 0 10px;
-      }
-
-      nav ul li:hover {
-        text-decoration: underline; 
-      }
-
-      nav ul li {
-        font-size: 18px;
-        font-weight: bold;
-        color: #333;
-        cursor: pointer;
-      }
-
-      nav ul li:not(:last-child) {
-        margin-right: 20px;
-      }
-
-      section.palette {
-        display: grid;
-        grid-template-columns: repeat(
-          5,
-          1fr
-        ); 
-        height: 100vh;
-      }
-
-      section.palette div {
-        height: 100%;
-      }
-    </style>
+    <link rel="stylesheet" href="./src/assets/css/colorButton.css" />
+    <link rel="stylesheet" href="./src/assets/css/copyButton.css" />
+    <link rel="stylesheet" href="./src/assets/css/styles.css" />
+    <script type="module" src="./src/scripts/script.js" defer></script>
   </head>
   <body>
     <header>
       <nav>
         <ul>
-          <li>Home</li>
-          <li>Pallete</li>
-          <li>About</li>
+          <li><a href="">Home</a></li>
+          <li><a href="">Pallete</a></li>
+          <li><a href="">About</a></li>
         </ul>
       </nav>
     </header>
 
-    <section class="palette">
-      <div id="color-1"></div>
-      <div id="color-2"></div>
-      <div id="color-3"></div>
-      <div id="color-4"></div>
-      <div id="color-5"></div>
-    </section>
-
-    <script>
-      const colors = document.querySelectorAll(".palette div");
-      const hexValues = [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "F",
-      ];
-
-      colors.forEach(function (color, index) {
-        let i = index + 1;
-        let button = document.createElement("button");
-        button.classList.add("color-button");
-        let copy = document.createElement("button");
-        copy.classList.add("copy-button");
-        let currentColor = changeColor(i);
-        button.innerText = currentColor;
-        copy.innerText = "Copiar";
-        button.addEventListener("click", function () {
-          currentColor = changeColor(i);
-          button.innerText = currentColor;
-          copy.innerText = "Copiar";
-          // button.style.backgroundColor = changeColor(i);
-        });
-
-        copy.addEventListener("click", function () {
-          let copyText = currentColor;
-          console.log(copyText);
-          copiarParaClipboard(copyText);
-          copy.innerText = "Copiado!";
-        });
-
-        color.appendChild(button);
-        color.appendChild(copy);
-      });
-
-      function changeColor(index) {
-        let colorDiv = document.getElementById(`color-${index}`);
-        let randomColor = "#";
-
-        for (let i = 0; i < 6; i++) {
-          randomColor +=
-            hexValues[Math.floor(Math.random() * hexValues.length)];
-        }
-        colorDiv.style.backgroundColor = randomColor;
-
-        return randomColor;
-      }
-
-      function copiarParaClipboard(valor) {
-        var input = document.createElement("input");
-        input.value = valor;
-        document.body.appendChild(input);
-
-        input.select();
-
-        document.execCommand("copy");
-
-        document.body.removeChild(input);
-      }
-    </script>
+    <section class="palette"></section>
   </body>
 </html>

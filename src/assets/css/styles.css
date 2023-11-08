@@ -1,0 +1,55 @@
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CSS para o menu fixo no topo */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav ul li:hover {
+  text-decoration: underline;
+  background-color: #ccc;
+}
+
+nav ul li a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+nav ul li:not(:last-child) {
+  margin-right: 20px;
+}
+
+/* CSS section */
+section.palette {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  width: 100%;
+  height: 100vh;
+}
+
+section.palette div {
+  height: 100%;
+}
