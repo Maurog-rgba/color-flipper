@@ -1,3 +1,7 @@
+@import "colorButton.css";
+@import "copyButton.css";
+@import "addButton.css";
+
 * { 
   margin: 0;
   padding: 0;

@@ -2,7 +2,7 @@ import Helpers from "./helpers.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const helpers = new Helpers();
-  helpers.generatePallete();
+  helpers.generatePalette();
 
   const colors = document.querySelectorAll(".palette div");
 
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let button = document.createElement("button");
     let copy = document.createElement("button");
     let currentColor = helpers.changeColor(i);
-    
+
     button.classList.add("color-button");
     copy.classList.add("copy-button");
 

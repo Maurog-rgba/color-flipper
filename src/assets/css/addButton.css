@@ -1,0 +1,22 @@
+.add-button, .delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Ajuste o tamanho conforme necessário */
+  height: 40px; /* Ajuste o tamanho conforme necessário */
+  background-color: #3498db; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin: 5px; /* Espaçamento entre os botões */
+}
+
+.add-button {
+  background-color: #2ecc71; /* Cor de fundo para o botão de adição */
+}
+
+.delete-button {
+  background-color: #e74c3c; /* Cor de fundo para o botão de exclusão */
+}
