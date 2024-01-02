@@ -1,8 +1,10 @@
 export default class Helpers {
+
   hexValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+  lastIndex = 0;
 
   generatePalette() {
-    for (let i = 1; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
       this.generateColorDiv(i);
     }
   }
@@ -11,8 +13,9 @@ export default class Helpers {
     const palette = document.querySelector(".palette");
     const color = document.createElement("div");
     const buttonsDiv = document.createElement("div");
+    const colors = document.querySelectorAll(".color");
 
-    if (i > 10) {
+    if (colors.length > 10) {
       alert("Você atingiu o limite de cores!");
     }
 
@@ -23,7 +26,7 @@ export default class Helpers {
 
 
     // let button = document.createElement("button");
-    // button.classList.add("add-button");
+    // button.classList.add("add-button"); 
     // button.innerText = "+";
 
     let deleteButton = document.createElement("button");
@@ -47,6 +50,7 @@ export default class Helpers {
     palette.appendChild(color);
 
     this.generateHexCopyButtons(color, i);
+    this.lastIndex++;
   }
 
   generateHexCopyButtons(color, i) {

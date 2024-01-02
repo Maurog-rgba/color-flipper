@@ -5,9 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
   helpers.generatePalette();
 
   window.addEventListener("keydown", function (event) {
-    const colors = document.querySelectorAll(".color");
     if (event.key === " ") {
-      helpers.generateColorDiv(colors.length + 1);
+      helpers.generateColorDiv(helpers.lastIndex + 1);
     }
   });
 });
