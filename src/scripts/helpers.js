@@ -1,4 +1,4 @@
-class Helpers {
+export default class Helpers {
   hexValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
 
   generatePalette() {
@@ -9,32 +9,41 @@ class Helpers {
 
   generateColorDiv(i) {
     const palette = document.querySelector(".palette");
+    const color = document.createElement("div");
+    const buttonsDiv = document.createElement("div");
 
-    let color = document.createElement("div");
+    if (i > 10) {
+      alert("Você atingiu o limite de cores!");
+    }
+
+    buttonsDiv.classList.add("buttons");
+    buttonsDiv.style.height = "auto";
     color.classList.add("color");
     color.id = `color-${i}`;
 
-    console.log("color.id", color.id);
-    let button = document.createElement("button");
-    button.classList.add("add-button");
-    button.innerText = "+";
+
+    // let button = document.createElement("button");
+    // button.classList.add("add-button");
+    // button.innerText = "+";
 
     let deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-button");
     deleteButton.innerText = "x";
 
-    button.addEventListener("click", () => {
-      let colors = document.querySelectorAll(".color");
-      this.generateColorDiv(colors.length + 1);
-      this.changeColor(colors.length + 1);
-    });
+    // button.addEventListener("click", () => {
+    //   let colors = document.querySelectorAll(".color");
+    //   this.generateColorDiv(colors.length + 1);
+    //   this.changeColor(colors.length + 1);
+    // });
 
     deleteButton.addEventListener("click", () => {
       color.remove();
     });
 
-    color.appendChild(deleteButton);
-    color.appendChild(button);
+    // buttonsDiv.appendChild(button);
+    buttonsDiv.appendChild(deleteButton);
+    color.appendChild(buttonsDiv);
+
     palette.appendChild(color);
 
     this.generateHexCopyButtons(color, i);
@@ -51,13 +60,13 @@ class Helpers {
     colorButton.innerText = currentColor;
     copyButton.innerText = "Copiar";
 
-    colorButton.addEventListener("click", function () {
+    colorButton.addEventListener("click", () => {
       currentColor = this.changeColor(i);
-      button.innerText = currentColor;
+      colorButton.innerText = currentColor;
       copyButton.innerText = "Copiar";
     });
 
-    copyButton.addEventListener("click", function () {
+    copyButton.addEventListener("click", () => {
       let copyText = currentColor;
       this.copiarParaClipboard(copyText);
       copyButton.innerText = "Copiado!";
@@ -90,5 +99,3 @@ class Helpers {
       });
   }
 }
-
-export default Helpers;

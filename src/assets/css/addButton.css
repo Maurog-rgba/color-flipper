@@ -1,22 +1,41 @@
-.add-button, .delete-button {
+.buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px; /* Ajuste o tamanho conforme necessário */
-  height: 40px; /* Ajuste o tamanho conforme necessário */
-  background-color: #3498db; /* Cor de fundo */
-  color: #fff; /* Cor do texto */
+  width: 100%;
+  margin: 10px 0;
+}
+
+.add-button,
+.delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #3498db;
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%;
   font-size: 1.2em;
   cursor: pointer;
-  margin: 5px; /* Espaçamento entre os botões */
+  /* margin: 5px; */
 }
 
 .add-button {
-  background-color: #2ecc71; /* Cor de fundo para o botão de adição */
+  background-color: #2ecc71;
 }
 
 .delete-button {
-  background-color: #e74c3c; /* Cor de fundo para o botão de exclusão */
+  background-color: #e74c3c;
+}
+
+.add-button:hover,
+.delete-button:hover {
+  background-color: #ffffff;
+  color: black;
+  transform: rotate(360deg);
+  scale: 1.2;
+  border: 1px solid #000000;
+  transition: 0.5s;
 }
