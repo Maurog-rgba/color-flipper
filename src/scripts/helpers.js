@@ -14,6 +14,7 @@ class Helpers {
     color.classList.add("color");
     color.id = `color-${i}`;
 
+    console.log("color.id", color.id);
     let button = document.createElement("button");
     button.classList.add("add-button");
     button.innerText = "+";
@@ -23,8 +24,9 @@ class Helpers {
     deleteButton.innerText = "x";
 
     button.addEventListener("click", () => {
-      this.generateColorDiv(palette.length + 1);
-      this.changeColor(palette.length + 1);
+      let colors = document.querySelectorAll(".color");
+      this.generateColorDiv(colors.length + 1);
+      this.changeColor(colors.length + 1);
     });
 
     deleteButton.addEventListener("click", () => {
@@ -34,6 +36,35 @@ class Helpers {
     color.appendChild(deleteButton);
     color.appendChild(button);
     palette.appendChild(color);
+
+    this.generateHexCopyButtons(color, i);
+  }
+
+  generateHexCopyButtons(color, i) {
+    let colorButton = document.createElement("button");
+    let copyButton = document.createElement("button");
+    let currentColor = this.changeColor(i);
+
+    colorButton.classList.add("color-button");
+    copyButton.classList.add("copy-button");
+
+    colorButton.innerText = currentColor;
+    copyButton.innerText = "Copiar";
+
+    colorButton.addEventListener("click", function () {
+      currentColor = this.changeColor(i);
+      button.innerText = currentColor;
+      copyButton.innerText = "Copiar";
+    });
+
+    copyButton.addEventListener("click", function () {
+      let copyText = currentColor;
+      this.copiarParaClipboard(copyText);
+      copyButton.innerText = "Copiado!";
+    });
+
+    color.appendChild(colorButton);
+    color.appendChild(copyButton);
   }
 
   changeColor(index) {
@@ -49,15 +80,14 @@ class Helpers {
   }
 
   copiarParaClipboard(valor) {
-    var input = document.createElement("input");
-    input.value = valor;
-    document.body.appendChild(input);
-
-    input.select();
-
-    document.execCommand("copy");
-
-    document.body.removeChild(input);
+    navigator.clipboard
+      .writeText(valor)
+      .then(() => {
+        console.log("Text copied to clipboard");
+      })
+      .catch((error) => {
+        console.error("Failed to copy text to clipboard:", error);
+      });
   }
 }
 
