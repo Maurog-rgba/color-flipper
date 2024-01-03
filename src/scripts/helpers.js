@@ -1,6 +1,6 @@
 export default class Helpers {
-
   hexValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+  colors = [];
   lastIndex = 0;
 
   generatePalette() {
@@ -17,6 +17,7 @@ export default class Helpers {
 
     if (colors.length > 10) {
       alert("Você atingiu o limite de cores!");
+      return;
     }
 
     buttonsDiv.classList.add("buttons");
@@ -24,32 +25,22 @@ export default class Helpers {
     color.classList.add("color");
     color.id = `color-${i}`;
 
-
-    // let button = document.createElement("button");
-    // button.classList.add("add-button"); 
-    // button.innerText = "+";
-
     let deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-button");
     deleteButton.innerText = "x";
 
-    // button.addEventListener("click", () => {
-    //   let colors = document.querySelectorAll(".color");
-    //   this.generateColorDiv(colors.length + 1);
-    //   this.changeColor(colors.length + 1);
-    // });
-
     deleteButton.addEventListener("click", () => {
       color.remove();
+      this.atualizarListaCores();
     });
 
-    // buttonsDiv.appendChild(button);
     buttonsDiv.appendChild(deleteButton);
     color.appendChild(buttonsDiv);
 
     palette.appendChild(color);
 
     this.generateHexCopyButtons(color, i);
+    this.atualizarListaCores();
     this.lastIndex++;
   }
 
@@ -101,5 +92,37 @@ export default class Helpers {
       .catch((error) => {
         console.error("Failed to copy text to clipboard:", error);
       });
+  }
+
+  atualizarListaCores() {
+    const colors = document.querySelectorAll(".color");
+    this.colors = [];
+
+    colors.forEach((color) => {
+      const colorButton = color.querySelector(".color-button");
+      const colorText = colorButton.innerText;
+      this.colors.push(colorText);
+    });
+
+    // Reset all color variables
+    document.documentElement.style.setProperty("--color-1", "#000000");
+    document.documentElement.style.setProperty("--color-2", "#000000");
+    document.documentElement.style.setProperty("--color-3", "#000000");
+    document.documentElement.style.setProperty("--color-4", "#000000");
+    document.documentElement.style.setProperty("--color-5", "#000000");
+
+    // Update color variables with actual colors
+    for (let i = 0; i < this.colors.length; i++) {
+      document.documentElement.style.setProperty(`--color-${i + 1}`, this.colors[i]);
+    }
+
+    console.log(this.colors);
+  }
+
+  deleteAllColorDivs() {
+    const colors = document.querySelectorAll(".color");
+    colors.forEach((color) => {
+      color.remove();
+    });
   }
 }

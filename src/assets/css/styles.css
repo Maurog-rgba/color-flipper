@@ -57,3 +57,60 @@ section.palette div {
   height: 100%;
   width: 100%;
 }
+
+.color {
+  display: flex;
+  flex-direction: column;
+}
+
+/* gradient vars */
+:root {
+  --color-1: #f3e7e9;
+  --color-2: #e3d0d4;
+  --color-3: #d3b9be;
+  --color-4: #c3a2ac;
+  --color-5: #b38b9a;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-1) 0%,
+    var(--color-2) 20%,
+    var(--color-3) 40%,
+    var(--color-4) 60%,
+    var(--color-5) 80%
+  );
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  height: 100%;
+}
+
+.btn {
+  width: 150px;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.btn:hover {
+  background-color: #ccc;
+  transition: all 0.3s ease-in-out;
+}

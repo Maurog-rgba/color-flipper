@@ -9,4 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
       helpers.generateColorDiv(helpers.lastIndex + 1);
     }
   });
+
+  const addButton = document.querySelector(".add");
+
+  addButton.addEventListener("click", function () {
+    helpers.generateColorDiv(helpers.lastIndex + 1);
+  });
 });
