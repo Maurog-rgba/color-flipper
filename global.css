@@ -1,0 +1,18 @@
+@import "colorButton.css";
+@import "copyButton.css";
+@import "addButton.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* gradient vars */
+:root {
+  --color-1: #f3e7e9;
+  --color-2: #e3d0d4;
+  --color-3: #d3b9be;
+  --color-4: #c3a2ac;
+  --color-5: #b38b9a;
+}

@@ -1,4 +1,4 @@
-import Helpers from "./helpers.js";
+import Helpers from "./helper/helpers.js"
 
 document.addEventListener("DOMContentLoaded", function () {
   const helpers = new Helpers();
