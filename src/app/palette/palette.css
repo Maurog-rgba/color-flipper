@@ -195,3 +195,13 @@ section.palette div {
   background-color: #ccc;
   transition: all 0.3s ease-in-out;
 }
+
+.home {
+  background-color: #3498db;
+  border: none;
+}
+
+.logout {
+  background-color: #e74c3c;
+  border: none;
+}

@@ -2,11 +2,23 @@ export default class Helpers {
   hexValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
   colors = [];
   lastIndex = 0;
+  divStart = 5;
 
   generatePalette() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < this.divStart; i++) {
       this.generateColorDiv(i);
     }
+  }
+
+  randomAllColors() {
+    const colors = document.querySelectorAll(".color");
+
+    colors.forEach((color) => {
+      const colorButton = color.querySelector(".color-button");
+      colorButton.innerText = this.changeColor(color.id.split("-")[1]);
+
+      this.atualizarListaCores();
+    });
   }
 
   generateColorDiv(i) {
@@ -59,6 +71,7 @@ export default class Helpers {
       currentColor = this.changeColor(i);
       colorButton.innerText = currentColor;
       copyButton.innerText = "Copiar";
+      this.atualizarListaCores();
     });
 
     copyButton.addEventListener("click", () => {
@@ -115,8 +128,6 @@ export default class Helpers {
     for (let i = 0; i < this.colors.length; i++) {
       document.documentElement.style.setProperty(`--color-${i + 1}`, this.colors[i]);
     }
-
-    console.log(this.colors);
   }
 
   deleteAllColorDivs() {
