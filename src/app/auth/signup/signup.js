@@ -17,7 +17,12 @@ document.querySelector(".container").addEventListener("submit", function (event)
     },
     body: JSON.stringify(userData),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("HTTP error " + response.status);
+      }
+      return response.json();
+    })
     .then((data) => {
       sessionStorage.setItem("token", data.token);
       window.location.href = "../../home/home.html";
