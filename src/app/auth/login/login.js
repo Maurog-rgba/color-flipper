@@ -25,6 +25,6 @@ document.querySelector(".container").addEventListener("submit", function (event)
     })
     .catch((error) => {
       console.error("Error:", error);
-      alert("Usuário ou senha incorretos");
+      alert("Username or password is incorrect.");
     });
 });

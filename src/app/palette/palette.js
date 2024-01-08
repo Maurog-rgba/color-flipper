@@ -10,28 +10,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  const addButton = document.querySelector(".add");
+  function handleButtonElements(buttonClass, callback) {
+    const element = document.querySelector(buttonClass);
+    element.addEventListener("click", function () {
+      callback();
+    });
+  }
 
-  addButton.addEventListener("click", function () {
+  handleButtonElements(".home", function () {
+    window.location.href = "../home/home.html";
+  });
+  
+  handleButtonElements(".save", function () {
+    alert("Must be logged in to save palette.");
+  });
+
+  handleButtonElements(".add", function () {
     helpers.generateColorDiv(helpers.lastIndex + 1);
   });
 
-  const homeButton = document.querySelector(".home");
-
-  homeButton.addEventListener("click", function () {
-    window.location.href = "../home/home.html";
-  });
-
-
-  const randomButton = document.querySelector(".random");
-
-  randomButton.addEventListener("click", function () {
+  handleButtonElements(".random", function () {
     helpers.randomAllColors();
   });
 
-  const logoutButton = document.querySelector(".logout");
-
-  logoutButton.addEventListener("click", function () {
+  handleButtonElements(".logout", function () {
     sessionStorage.removeItem("token");
     window.location.href = "../auth/login/login.html";
   });

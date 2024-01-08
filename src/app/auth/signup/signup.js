@@ -28,6 +28,7 @@ document.querySelector(".container").addEventListener("submit", function (event)
       window.location.href = "../../home/home.html";
     })
     .catch((error) => {
+      alert("Ops! Something went wrong. Please try again later.")
       console.error("Error:", error);
     });
 });
